@@ -1,0 +1,44 @@
+{
+  "name": "Telegram Drive",
+  "description": "A self-hosted, Google-Drive-style file manager backed by your own Telegram account. Made by ~Euthle (@euthle).",
+  "keywords": ["telegram", "drive", "fastapi", "telethon", "storage", "python"],
+  "repository": "https://github.com/YOUR_GITHUB_USERNAME/telegram-drive",
+  "logo": "https://em-content.zobj.net/source/apple/391/inbox-tray_1f4e5.png",
+  "success_url": "/login",
+  "env": {
+    "SECRET_KEY": {
+      "description": "Long random string used to sign sessions/CSRF tokens and to derive the encryption key for stored Telegram credentials.",
+      "generator": "secret"
+    },
+    "ENV": {
+      "description": "Deployment environment.",
+      "value": "production"
+    },
+    "TELEGRAM_API_ID": {
+      "description": "Optional: pre-fill the Telegram setup form. Get one free at https://my.telegram.org.",
+      "required": false
+    },
+    "TELEGRAM_API_HASH": {
+      "description": "Optional: pairs with TELEGRAM_API_ID above.",
+      "required": false
+    },
+    "MAX_UPLOAD_SIZE_MB": {
+      "description": "Maximum upload size per file, in MB.",
+      "value": "2000"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "eco"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql:mini"
+    }
+  ],
+  "buildpacks": [
+    { "url": "heroku/python" }
+  ]
+}
